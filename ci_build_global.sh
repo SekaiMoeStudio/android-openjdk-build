@@ -1,5 +1,5 @@
 #!/bin/bash
-set -e
+set -ex
 . setdevkitpath.sh
 
 export JDK_DEBUG_LEVEL=release
@@ -15,9 +15,9 @@ cp devkit.info.${TARGET_SHORT} ${TOOLCHAIN}
 
 # Some modifies to NDK to fix
 
-./getlibs.sh
-./buildlibs.sh
-./clonejdk.sh
-./buildjdk.sh
-./removejdkdebuginfo.sh
-./tarjdk.sh
+bash -x ./getlibs.sh
+bash -x ./buildlibs.sh
+bash -x ./clonejdk.sh
+bash -x ./buildjdk.sh
+bash -x ./removejdkdebuginfo.sh
+bash -x ./tarjdk.sh
