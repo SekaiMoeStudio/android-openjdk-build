@@ -1,4 +1,5 @@
 #!/bin/bash
+set -x
 if [[ "$1" = "--version" ]]; then
   echo "${TARGET}-g++ (GCC) 14.1 20240507 (release)"
   echo "Copyright (C) Free Software Foundation, Inc."
@@ -6,6 +7,6 @@ if [[ "$1" = "--version" ]]; then
   echo "warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE."
 else
   # theargs=
-  exec $thecxx -Wno-unknown-warning-option "${@/-fno-var-tracking-assignments/}"
+  exec ccache $thecxx -Wno-unknown-warning-option "${@/-fno-var-tracking-assignments/}"
   # exec $thecxx "$theargs"
 fi
