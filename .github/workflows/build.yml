@@ -24,6 +24,13 @@ jobs:
       run: |
         sudo apt update
         sudo apt -y install systemtap-sdt-dev libxtst-dev libasound2-dev libelf-dev libfontconfig1-dev libx11-dev libxext-dev libxrandr-dev libxrender-dev libxtst-dev libxt-dev
+    - name: ccache
+      uses: hendrikmuhs/ccache-action@v1.2
+      with:
+        key: ${{ github.job }}-${{ matrix.os }}
+        create-symlink: true
+        max-size: 4096MB
+        verbose: 2
     - name: Build with CI build script
       run: bash -x "ci_build_arch_${{matrix.arch}}.sh"
     - name: Upload JDK build output
