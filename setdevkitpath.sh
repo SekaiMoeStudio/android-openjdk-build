@@ -49,11 +49,12 @@ export thecc=$TOOLCHAIN/bin/${TARGET}${API}-clang
 export thecxx=$TOOLCHAIN/bin/${TARGET}${API}-clang++
 
 # Configure and build.
+export PATH="/usr/lib/ccache:/usr/local/opt/ccache/libexec:$PATH"
 export DLLTOOL=$TOOLCHAIN/bin/llvm-dlltool
 export CXXFILT=$TOOLCHAIN/bin/llvm-cxxfilt
 export NM=$TOOLCHAIN/bin/llvm-nm
-export CC=$PWD/android-wrapped-clang
-export CXX=$PWD/android-wrapped-clang++
+export CC="ccache $PWD/android-wrapped-clang"
+export CXX="ccahce $PWD/android-wrapped-clang++"
 export AR=$TOOLCHAIN/bin/llvm-ar
 export AS=$TOOLCHAIN/bin/llvm-as
 export LD=$TOOLCHAIN/bin/ld
