@@ -1,5 +1,5 @@
 #!/bin/bash
-set -x
+
 if [[ "$1" = "--version" ]]; then
   echo "${TARGET}-g++ (GCC) 14.1 20240507 (release)"
   echo "Copyright (C) Free Software Foundation, Inc."
