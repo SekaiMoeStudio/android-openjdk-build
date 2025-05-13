@@ -5,12 +5,7 @@ on:
   push:
 jobs:
   build_android:
-    strategy:
-      matrix:
-        arch: aarch64
-      fail-fast: false
-
-    name: "Build for Android ${{matrix.arch}}"
+    name: "Build for Android aarch64"
     runs-on: ubuntu-24.04
     steps:
     - name: Checkout repository
@@ -32,16 +27,16 @@ jobs:
         max-size: 1024MB
         verbose: 2
     - name: Build with CI build script
-      run: bash -x "ci_build_arch_${{matrix.arch}}.sh"
+      run: bash -x "ci_build_arch_aarch64.sh"
     - name: Upload JDK build output
       uses: actions/upload-artifact@main
       with:
-        name: "jdk17-${{matrix.arch}}"
+        name: "jdk17-aarch64"
         path: jdk17*.tar.xz
     - name: Upload JRE build output
       uses: actions/upload-artifact@main
       with:
-        name: 'jre17-${{matrix.arch}}'
+        name: 'jre17-aarch64'
         path: jre17*.tar.xz
     - name: Upload JRE debuginfo build output
       uses: actions/upload-artifact@main
