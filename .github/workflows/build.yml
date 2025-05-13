@@ -7,7 +7,7 @@ jobs:
   build_android:
     strategy:
       matrix:
-        arch: [ "aarch64", "x86_64" ]
+        arch: aarch64
       fail-fast: false
 
     name: "Build for Android ${{matrix.arch}}"
@@ -29,7 +29,7 @@ jobs:
       with:
         key: ${{ github.job }}-${{ matrix.os }}
         create-symlink: true
-        max-size: 4096MB
+        max-size: 1024MB
         verbose: 2
     - name: Build with CI build script
       run: bash -x "ci_build_arch_${{matrix.arch}}.sh"
